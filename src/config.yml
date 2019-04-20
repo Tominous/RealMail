@@ -46,7 +46,7 @@
 # The time of day in ticks that queued mail will be delivered
 # Set to -1 for instantaneous/express sending of mail
 # Not yet implemented
-dateformat: MM/dd/yy hh:mma zzz
+dateformat: dd/MM/yyyy hh:mma zzz
 universal_mailboxes: false
 enable_attachments: true
 login_notification: true
