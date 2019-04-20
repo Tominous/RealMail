@@ -451,7 +451,7 @@ public class RealMail extends JavaPlugin {
     
     //<editor-fold defaultstate="collapsed" desc="Old Methods">
     private boolean sendBook(org.bukkit.inventory.ItemStack bookStack, Player fromPlayer, String toString, boolean bulk) {
-        /*Player target  = org.bukkit.Bukkit.getServer().getPlayer(toString);
+        Player target  = org.bukkit.Bukkit.getServer().getPlayer(toString);
         try {
             java.util.Date dateRaw = java.util.Calendar.getInstance().getTime();
             java.text.SimpleDateFormat format = new java.text.SimpleDateFormat();
@@ -477,8 +477,8 @@ public class RealMail extends JavaPlugin {
             bookStack.setItemMeta(bookMeta);
 
              Send Book 
-            //target.getInventory().addItem((org.bukkit.inventory.ItemStack) bookCraftStack);
-            //fromPlayer.setItemInHand(new org.bukkit.inventory.ItemStack(0));
+            target.getInventory().addItem((org.bukkit.inventory.ItemStack) bookCraftStack);
+            fromPlayer.setItemInHand(new org.bukkit.inventory.ItemStack(0));
             if (mailboxesConfig.contains(toString)) {
                 org.bukkit.World world = Bukkit.getWorld((String) mailboxesConfig.get(toString+".world"));
                 org.bukkit.block.Block block = world.getBlockAt(mailboxesConfig.getInt(toString+".x"), mailboxesConfig.getInt(toString+".y"), mailboxesConfig.getInt(toString+".z"));
@@ -521,16 +521,16 @@ public class RealMail extends JavaPlugin {
             if (!bulk) {
                 fromPlayer.sendMessage(prefix+ChatColor.WHITE+"Failed to mail the book.");
             }
-        }*/
+        }
         return true;
     }
     
     public boolean setSignStatus(boolean unread, org.bukkit.block.Block chestBlock, String ownerName) {
-        /*for (int x = chestBlock.getX()-getConfig().getInt("signradius"); x <= chestBlock.getX()+getConfig().getInt("signradius"); x++) {
+        for (int x = chestBlock.getX()-getConfig().getInt("signradius"); x <= chestBlock.getX()+getConfig().getInt("signradius"); x++) {
             for (int y = chestBlock.getY()-getConfig().getInt("signradius"); y <= chestBlock.getY()+getConfig().getInt("signradius"); y++) {
                 for (int z = chestBlock.getZ()-getConfig().getInt("signradius"); z <= chestBlock.getZ()+getConfig().getInt("signradius"); z++) {
                     org.bukkit.block.Block block = chestBlock.getWorld().getBlockAt(x, y, z);
-                    //if (block.getType() == org.bukkit.Material.SIGN || block.getType() == org.bukkit.Material.SIGN_POST) {
+                    if (block.getType() == org.bukkit.Material.SIGN || block.getType() == org.bukkit.Material.SIGN_POST) {
                     if (block.getTypeId() == 63 || block.getTypeId() == 68) {
                         org.bukkit.block.Sign sign = (org.bukkit.block.Sign) block.getState();
                         if (sign.getLine(0).equals("[Mailbox]")) {
@@ -552,7 +552,7 @@ public class RealMail extends JavaPlugin {
                     }
                 }
             }
-        }*/
+        }
         return false;
     }
     //</editor-fold>
@@ -812,8 +812,8 @@ public class RealMail extends JavaPlugin {
                                                     im.setDisplayName("§rPackage");
                                                     current.setItemMeta(im);
                                                     e.setCursor(new ItemStack(Material.AIR));
-                                                    //cursor.setType(Material.AIR);
-                                                    //cursor.setAmount(0);
+                                                    cursor.setType(Material.AIR);
+                                                    cursor.setAmount(0);
                                                     e.setResult(Event.Result.DENY);
                                                 } catch (Exception ex) {
                                                     e.getWhoClicked().sendMessage(prefix+ChatColor.WHITE+languageConfig.getString("mail.couldNotAttach", "Could not attach the item."));
